@@ -46,6 +46,7 @@ class ContactForm extends Component {
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
+            placeholder="Enter name"
             id={this.nameInputId}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -57,6 +58,7 @@ class ContactForm extends Component {
           <input
             type="tel"
             name="number"
+            placeholder="Enter number"
             value={this.state.number}
             onChange={this.handleChange}
             id={this.numberInputId}
@@ -65,7 +67,9 @@ class ContactForm extends Component {
             required
           />
         </label>
-        <button type="submit" className='submitBtn'>Add contact</button>
+        <button type="submit" className="submitBtn">
+          Add contact
+        </button>
       </form>
     );
   }
