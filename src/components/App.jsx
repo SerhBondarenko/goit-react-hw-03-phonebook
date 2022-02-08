@@ -50,25 +50,17 @@ class App extends Component {
   //==================================
   componentDidUpdate(prevProps, prevState) { 
     if (this.state.contacts !== prevState.contacts) {
-      console.log('Oбновилось кол-во контактов');
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
     };
-    console.log('App componentDidUpdate')
-    console.log(prevProps)
-    console.log(prevState);
-    console.log(this.state);
   };
 //==================================
 
   componentDidMount() { 
-    console.log('componentDidMount')
     const contacts = localStorage.getItem('contacts');
     const parsedContacts = JSON.parse(contacts);
     if (parsedContacts) {
   this.setState({ contacts: parsedContacts });
     };
-    console.log(parsedContacts);
-
   };
   
 //===================================
