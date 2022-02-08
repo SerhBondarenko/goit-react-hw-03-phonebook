@@ -47,7 +47,31 @@ class App extends Component {
   contacts: [contact, ...prevState.contacts],
 }))
   };
-//============================= render ===================
+  //==================================
+  componentDidUpdate(prevProps, prevState) { 
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('Oбновилось кол-во контактов');
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    };
+    console.log('App componentDidUpdate')
+    console.log(prevProps)
+    console.log(prevState);
+    console.log(this.state);
+  };
+//==================================
+
+  componentDidMount() { 
+    console.log('componentDidMount')
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) {
+  this.setState({ contacts: parsedContacts });
+    };
+    console.log(parsedContacts);
+
+  };
+  
+//===================================
   render() {
     const { contacts, filter } = this.state;
     const normalizeFilter = filter.toLowerCase();
@@ -67,21 +91,3 @@ class App extends Component {
    }
 };
 export default App;
-
-
-
-
-
-
-
-
-  /*handleNameChange = event => {
-    console.log(event.currentTarget.value);
-    this.setState({ name: event.currentTarget.value })
-  };
-  const learnedContactCount = contacts.reduce((acc, contact) => (contact.learned ? acc + 1 : acc), 0);
-   <p>Количиство выученных на память: {learnedContactCount}</p>
-
-    const totalContacts = contacts.length;
-    <p>Total number of contacts: {totalContacts}<br /></p>
-*/
