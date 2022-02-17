@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-  const ContactListItem = ({ contacts, onDeleteContact }) => { 
-
-    return( contacts.map(({ id, name, number }) => (
-          <li key={id}>
-            {name}: {number}{' '}
-            <button onClick={() => onDeleteContact(id)}>Delete</button>
-          </li>
-        )))
-};
+  const ContactListItem = ({ id, name, number, onDeleteContact }) => {
+    return (
+      <li key={id}>
+        {name}: {number}{' '}
+        <button onClick={() => onDeleteContact(id)}>Delete</button>
+      </li>
+    ); 
+  };
 
 export default ContactListItem;
 
  ContactListItem.propTypes = {
-   contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+   name: PropTypes.string,
+   number: PropTypes.string,
    onDeleteContact: PropTypes.func.isRequired,
  };
